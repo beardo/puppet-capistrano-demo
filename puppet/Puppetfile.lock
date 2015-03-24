@@ -1,0 +1,42 @@
+FORGE
+  remote: https://forgeapi.puppetlabs.com
+  specs:
+    puppetlabs-apt (1.7.0)
+      puppetlabs-stdlib (>= 2.2.1)
+    puppetlabs-concat (1.1.2)
+      puppetlabs-stdlib (< 5.0.0, >= 3.2.0)
+    puppetlabs-postgresql (4.1.0)
+      puppetlabs-apt (< 2.0.0, >= 1.1.0)
+      puppetlabs-concat (< 2.0.0, >= 1.1.0)
+      puppetlabs-stdlib (~> 4.0)
+    puppetlabs-ruby (0.4.0)
+      puppetlabs-stdlib (< 5.0.0, >= 3.2.0)
+    puppetlabs-stdlib (4.5.1)
+
+GIT
+  remote: git://github.com/jfryman/puppet-nginx.git
+  ref: master
+  sha: fa34755873973a9a53f6823c4715890782624319
+  specs:
+    puppet-nginx (0.2.2)
+      puppetlabs-apt (< 2.0.0, >= 1.0.0)
+      puppetlabs-concat (< 2.0.0, >= 1.1.1)
+      puppetlabs-stdlib (< 5.0.0, >= 4.2.0)
+
+GIT
+  remote: https://github.com/echocat/puppet-redis.git
+  ref: master
+  sha: 3aaa744da1da654073f47aa15b5220057ba7023b
+  specs:
+    puppet-redis (1.2.3)
+      puppetlabs-stdlib (>= 4.2.0)
+
+DEPENDENCIES
+  puppet-nginx (>= 0)
+  puppet-redis (>= 0)
+  puppetlabs-apt (>= 0)
+  puppetlabs-postgresql (>= 0)
+  puppetlabs-ruby (>= 0)
+  puppetlabs-stdlib (>= 0)
+  puppetlabs-stdlib (>= 0)
+

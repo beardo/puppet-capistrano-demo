@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+#^syntax detection
+
+forge "https://forgeapi.puppetlabs.com"
+
+# A module from the Puppet Forge
+mod 'puppetlabs-stdlib'
+mod 'puppetlabs-apt'
+mod 'puppetlabs-postgresql'
+mod "puppetlabs-ruby"
+mod 'puppet-nginx',
+  git: "git://github.com/jfryman/puppet-nginx.git"
+mod 'puppet-redis',
+  git: "https://github.com/echocat/puppet-redis.git"
