@@ -1,0 +1,212 @@
+" General Setup
+" Disable compatibility with vi
+set nocompatible
+
+" Line wrapping off
+set nowrap
+
+" Restore screen contents when exiting vim
+set restorescreen
+
+" Enable mouse for all modes
+" causes error on school computers
+set mouse=a
+
+" Hide mouse while typing text
+set mousehide
+
+" Preferably use Unix file formats
+set fileformats=unix,dos
+
+" Display line numbers in front of each line
+set number
+
+" Display commands in bottom right corner as they are typed
+set showcmd
+
+" Size of history
+set history=150
+
+" Use <Tab> for command-line completion
+set wildchar=<Tab>
+
+" Display a list of matches when using command-line completion
+set wildmenu
+set wildmode=full
+set wildignore=*.o,*.obj,*.pyc,*.pyo,*.swp
+
+" Disable anykind of bell
+set t_vb =
+set noerrorbells
+set novisualbell
+
+" Soomther redraws
+set ttyfast
+
+" Permanent undos stored in .vim_undo or in it doesn't exist /tmp
+set undofile
+set undodir=$HOME/.vim_undo,/tmp
+
+" do not keep back up files
+set nobackup
+
+" swap files are annoying
+set noswapfile
+
+" change the terminal's title
+set title
+
+" Let me switch buffers without saving
+set hidden
+
+" Text edition
+
+" Syntax highlighting
+syntax on
+syntax enable
+
+" Don't cut lines
+set textwidth=81
+
+" Tab width
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+
+" autoindent
+set autoindent
+
+
+" Insert spaces instead of tabs
+set expandtab
+
+" Allow backspace to delete anything in insert mode
+set backspace=indent,eol,start
+
+" Don't break words
+set linebreak
+
+" Display as many lines as possible
+set display=lastline
+
+" Always keep 15 lines above and below the cursor if possible
+set scrolloff=15
+
+" Incremental search
+set incsearch
+
+" Highlight search terms
+set hlsearch
+
+" Press Space to turn off highlighting and clear any message already displayed
+:nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+
+" Ignore case when searching, but only if all letters are lowercase
+set smartcase
+set ignorecase
+
+" Wrap search when EOF is reached
+set wrapscan
+
+" Insert mode completion
+
+" Don't show possible completions that don't match the case of existing text
+set infercase
+
+" Don't show more than 10 items in the popup menu
+set pumheight=10
+
+" Where to look for possible completions
+"set complete=.,w,u,b,kspell
+set complete=.,w,u,b,kspell
+
+" How to show and insert possible completions
+set completeopt=menu,longest
+
+" Status line
+
+" Always display the status line
+set laststatus=2
+
+" Show the current editing status
+set showmode
+
+" Format string
+set statusline=File:\ %f\ %y%m%r%=\L%-5l\ \C%-4c\ [%L\ lines]
+
+
+" Make sure to automaticaly format pasted text
+noremap <buffer> p p=']']
+noremap <buffer> p P=']']
+
+" Functions
+
+" See :help restore-cursor
+fu! RestoreCursorOnBufRead()
+  " Don't restore the cursor position for SVN commit logs
+  if line("'\"") > 0 && line("'\"") <= line("$") && bufname('%') != 'svn-commit.tmp'
+    exe "normal! g`\""
+  endif
+endf
+
+" File types
+
+filetype on
+filetype plugin on
+filetype indent on
+
+" Miscellaneous
+
+" save file as utf-8
+"set enc=utf-8
+
+" change tab to 4 spaces for PEP 8 compliance
+" toggle relative and absolute line numbers
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set relativenumber&
+  else
+    set relativenumber
+  endif
+endfunc
+
+:au FocusLost * :set relativenumber&
+:au FocusGained * :set relativenumber
+
+autocmd InsertEnter * :set relativenumber&
+autocmd InsertLeave * :set relativenumber
+
+nnoremap <C-n> :call NumberToggle()<cr>
+
+" Restore cursor position when reading a buffer
+au BufReadPost * call RestoreCursorOnBufRead()
+
+" Always change to the directory of the current file
+au BufEnter * lcd %:p:h
+
+" make , the leader key
+let mapleader = ","
+
+" If a file is changed outside of vim, automatically reload it without asking
+set autoread
+
+" This makes RVM work inside Vim. I have no idea why.
+set shell=bash
+
+" highlight current line
+set cursorline
+
+"Make the current window big, but leave others contex
+set winwidth=84
+" We have to have a winheight bigger than we want to set winminheight. But if
+" we set winheight to be huge before winminheight, the winminheight set will
+" fail.
+set winheight=5
+set winminheight=5
+set winheight=999
+
+" reload vimrc when it changes
+augroup myvimrc
+  au!
+  au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+augroup END
