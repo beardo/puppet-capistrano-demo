@@ -150,7 +150,7 @@ class install_nginx {
   file { "/var/www/":
     ensure => "directory",
   }
-  file { "/var/www/puppet_capistrano":
+  file { "/var/www/puppet-capistrano":
     ensure => "directory",
     owner => "deploy",
     group => "deployers",
