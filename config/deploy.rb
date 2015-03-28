@@ -2,7 +2,7 @@
 lock '3.3.5'
 
 set :application, 'puppet-capistrano-demo'
-set :repo_url, 'git@example.com:beardo/puppet-capistrano-demo.git'
+set :repo_url, 'git@github.com:beardo/puppet-capistrano-demo.git'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
