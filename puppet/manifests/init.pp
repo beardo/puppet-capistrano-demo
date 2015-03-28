@@ -77,19 +77,18 @@ class create_users {
     mode => 600,
   }
 
-  file { "/home/rental_applications/.ssh/":
-    owner => "rental_applications",
-    #group => "rental_applications",
+  file { "/home/puppet_capistrano/.ssh/":
+    owner => "puppet_capistrano",
     ensure => "directory",
     mode => 700,
-    require => User["rental_applications"],
+    require => User["puppet_capistrano"],
   }
-  file { "/home/rental_applications/.ssh/authorized_keys":
-    owner => "rental_applications",
-    #group => "rental_applications",
+  file { "/home/puppet_capistrano/.ssh/authorized_keys":
+    owner => "puppet_capistrano",
+    #group => "puppet_capistrano",
     source => 'puppet:///files/ssh_authorized_keys',
     ensure => present,
-    require => File["/home/rental_applications/.ssh/"],
+    require => File["/home/puppet_capistrano/.ssh/"],
     mode => 600,
   }
 }
