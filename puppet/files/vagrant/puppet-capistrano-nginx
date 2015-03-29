@@ -2,5 +2,5 @@ server {
   listen 80 default_server;
   passenger_enabled on;
   passenger_app_env development;
-  root /var/www/puppet-capistrano/current/public;
+  root /var/www/puppet-capistrano-demo/current/public;
 }
