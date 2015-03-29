@@ -4,6 +4,9 @@ class install_postgres {
     postgres_password => 'password',
   }
 
+  postgresql::server::role { 'deploy':
+  }
+
   # development database
   # password is not a secure password and you should change it
   # also this isn't the most secure way to set your password
@@ -13,6 +16,7 @@ class install_postgres {
     user => 'deploy',
     owner => 'deploy',
     password => 'password',
+    require => [Class['postgresql::server'], User['deploy']],
   }
 
   # packages rails needs to talk to postgresql
