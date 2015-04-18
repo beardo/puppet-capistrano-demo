@@ -43,7 +43,7 @@ Then all you have to do are run the following commands:
 
 Then go to [192.168.123.21/hello_world](http://192.168.123.21/hello_world)
 and if you see something like this:
-![webpage with a Hello world! header and it worked body](https://github.com/beard/puppet-capistrano-demo/hello-world.png)
+![webpage with a Hello world! header and it worked body](https://raw.githubusercontent.com/beardo/puppet-capistrano-demo/master/example_images/hello-world.png)
 Then it worked!
 If not I'm not sure what went wrong.
 Maybe create an issue with the last few lines of the
