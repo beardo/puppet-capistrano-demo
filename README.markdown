@@ -19,9 +19,9 @@ This is a work in progress so there are some limitations.
    I know what I need to do to fix this but again haven't
    had the time to do it yet so use at your own risk.
 2. This is a single server setup.
-   No way to do seperate db and app servers or anything fancy like that.
+   No way to do separate db and app servers or anything fancy like that.
    I'd like to have that option
-   (or probably seperate example project)
+   (or probably separate example project)
    eventually but I don't really need it right now
    and I haven't gotten around to it yet.
 
@@ -157,14 +157,14 @@ In these files we define roles
 and give the user and address of those roles.
 The default (and required) roles for capistrano are: app, web, and db.
 Since I only need one server these are all the same for me.
-I also defined a seperate role called `puppet_prepare`.
-This role is only used for setting up our sever to use puppet.
+I also defined a separate role called `puppet_prepare`.
+This role is only used for setting up our server to use puppet.
 and actually running puppet on our file.
-This role has a diffrent user than the others
+This role has a different user than the others
 because this role needs to run before the `deploy` user exists
 and this role needs to have sudo which deploy does not need.
 The `no_release: true` makes sure that this role is
-ignorned in normal `cap stage deploy` commands because it isn't needed there
+ignored in normal `cap stage deploy` commands because it isn't needed there
 and so it can use different authentication methods than the `deploy` user.
 
 The files `lib/capistrano/tasks/puppet_install.rake`
